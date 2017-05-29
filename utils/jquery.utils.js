@@ -50,6 +50,8 @@ $.fn.getParams = function(actions, pswdEncrypt = false) {
                         data.options[$(this).attr('name')] = $(this).val();
                     }else if ($(this).attr('type') == 'file') {
                         data[$(this).attr('name')] = $(this)[0].files;
+                    }else if ($(this).attr('type') == 'button') {
+                        
                     }else {
                         data.params[$(this).attr('name')] = $(this).val();
                     }

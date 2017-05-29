@@ -27,8 +27,8 @@ $.fn.getParams = function(actions, pswdEncrypt = false) {
         };
         
         if (actions) {
-            data['action'] = this.attr('data-action') != undefined ? this.attr('data-action') : null;
-            data['url'] = this.attr('action') != undefined ? this.attr('action') : null;
+            data.options['action'] = this.attr('data-action') != undefined ? this.attr('data-action') : null;
+            data.options['url'] = this.attr('action') != undefined ? this.attr('action') : null;
         }
     
         

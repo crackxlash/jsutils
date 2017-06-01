@@ -208,3 +208,9 @@ String.prototype.format = function() {
 Array.prototype.isEmpty = function () {
      return this.length > 0 ? true : false; 
 };
+
+Object.prototype.updateKeys = function () {
+     return this.filter(function(data) { 
+          return data !== undefined;
+     });
+};

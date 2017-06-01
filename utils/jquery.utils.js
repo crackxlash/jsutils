@@ -204,3 +204,7 @@ String.prototype.format = function() {
         return typeof args[number] != 'undefined' ? args[number] : match;
     });
 };
+
+Array.prototype.isEmpty = function () {
+     return this.length > 0 ? true : false; 
+};

@@ -208,3 +208,20 @@ String.prototype.format = function() {
 Array.prototype.isEmpty = function () {
      return this.length > 0 ? true : false; 
 };
+
+Date.prototype.format = function (format = 'mdyy', separator = '/') {
+    getDate = new Date(this).toISOString().slice(0, 10).split('-');
+    
+    switch (format) {
+        case 'mdyy' : return getDate[1]+ separator +getDate[2]+ separator +getDate[0];
+            break;
+        case 'dmyy':  return getDate[2]+ separator +getDate[1]+ separator +getDate[0];
+            break;
+        case 'yymd':  return getDate[0]+ separator +getDate[1]+ separator +getDate[2];
+            break;
+        case 'yydm':  return getDate[0]+ separator +getDate[2]+ separator +getDate[1];
+            break;
+        default :  return getDate[1]+ separator +getDate[2]+ separator +getDate[0];
+            break;
+    }
+};

@@ -151,7 +151,10 @@ Array.prototype.isEmpty = function () {
      return this.length > 0 ? true : false; 
 };
 
-Date.prototype.format = function (format = 'mdyy', separator = '/') {
+Date.prototype.format = function (format, separator) {
+    format = typeof format !== 'undefined' ? format : 'mdyy';
+    separator = typeof separator !== 'undefined' ? separator : '/';
+    
     getDate = new Date(this).toISOString().slice(0, 10).split('-');
     
     switch (format) {

@@ -19,7 +19,8 @@ $.fn.validate = function () {
     }
 }
 
-$.fn.getParams = function(actions, pswdEncrypt = false) {
+$.fn.getParams = function(actions, pswdEncrypt) {
+    pswdEncrypt = typeof pswdEncrypt !== 'undefined' ? pswdEncrypt : false;
     if (this.prop('tagName') === 'FORM') {
         data = {
             params : {},
@@ -133,65 +134,6 @@ $.fn.clear = function() {
         return false;
     }
 };
-
-
-window.toast = function (message, options = {}) {
-    var alert,
-        position = {
-            topRight : {
-                top : '12px',
-                right : '12px'
-            },
-            topLeft : {
-                top : '12px',
-                left : '12px'
-            },
-            topMiddle : {
-                top : '12px',
-                right : '12px'
-            },
-            bottomRight : {
-                bottom : '12px',
-                right : '12px'
-            },
-            bottomLeft : {
-                bottom : '12px',
-                left : '12px'
-            },
-            bottomMiddle : {
-                bottom : '12px',
-                right : '12px'
-            }
-        };
-        
-    options = jQuery.isEmptyObject(options) ? {
-            type : 'default',
-            title : 'Alert!',
-            icon : 'info',
-        } : options;
-        
-    cssClass = options.class || '';
-    timeout = options.timeout != undefined ? 5000 : options.timeout;
-    cssPosition = position[options.position] == undefined ? position.topRight : position[options.position];
-    alert = '<div class="alert alert-{0} alert-dismissible '+ cssClass +'">' +
-                    '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' +
-                    '<h4><i class="icon fa fa-{1}"></i> {2}</h4>' +
-                    '{3}' +
-                '</div>';
-
-    $('body').append(alert.format(options.type, options.icon, options.title, message));
-    $('body').find('.alert').css({ position: 'absolute',
-                   background: '#fbfbfb',
-                   'min-width': '200px',
-                   'z-index': '999999'});
-
-    $('body').find('.alert').css(cssPosition);
-    $('body').stop().animate({scrollTop:0}, '500', 'swing');
-    
-    setTimeout(function () {
-        $('body').find('.alert').fadeOut(2000);
-    }, timeout);
-}
 
 String.prototype.getExtension = function () {
     var re = /(?:\.([^.]+))?$/;

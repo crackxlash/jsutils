@@ -147,7 +147,7 @@ String.prototype.format = function() {
     });
 };
 
-String.prototype.urlParamsUnique() {
+String.prototype.urlParamsUnique = function() {
 	var p = '',
 		bef = null,
     	url = this.split('?'),

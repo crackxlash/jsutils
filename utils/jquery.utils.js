@@ -160,7 +160,7 @@ String.prototype.urlParamsUnique = function() {
     	bef = qs.split('=')[0];
     });
 
-    return p.slice(0, -1);
+    return url[0] + '?' + p.slice(0, -1);
 };
 
 Array.prototype.isEmpty = function () {

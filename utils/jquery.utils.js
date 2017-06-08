@@ -147,6 +147,22 @@ String.prototype.format = function() {
     });
 };
 
+String.prototype.urlParamsUnique() {
+	var p = '',
+		bef = null,
+    	url = this.split('?'),
+    	getParams = url[1].split('&');
+        
+	getParams.forEach(function(qs) {
+    	if(qs.split('=')[0] != bef) 
+        	p += qs + '&';
+            
+    	bef = qs.split('=')[0];
+    });
+
+    return p.slice(0, -1);
+};
+
 Array.prototype.isEmpty = function () {
      return this.length > 0 ? true : false; 
 };

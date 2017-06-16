@@ -50,7 +50,7 @@ $.fn.getParams = function(actions, pswdEncrypt) {
                     }else if ($(this).attr('type') == 'hidden') {
                         data.options[$(this).attr('name')] = $(this).val();
                     }else if ($(this).attr('type') == 'file') {
-                        data[$(this).attr('name')] = $(this)[0].files;
+                        data[$(this).attr('name')] = $(this)[0].files[0];
                     }else if ($(this).attr('type') == 'button') {
                         
                     }else {

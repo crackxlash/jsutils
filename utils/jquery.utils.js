@@ -19,8 +19,10 @@ $.fn.validate = function () {
     }
 }
 
-$.fn.getParams = function(actions, pswdEncrypt) {
+$.fn.getParams = function(actions, pswdEncrypt, withOptions) {
     pswdEncrypt = typeof pswdEncrypt !== 'undefined' ? pswdEncrypt : false;
+    withOptions = typeof withOptions !== 'undefined' ? withOptions : false;
+
     if (this.prop('tagName') === 'FORM') {
         data = {
             params : {},
@@ -48,8 +50,12 @@ $.fn.getParams = function(actions, pswdEncrypt) {
 
                         data.params[$(this).attr('name')] = pswd;
                     }else if ($(this).attr('type') == 'hidden') {
-                        data.options[$(this).attr('name')] = $(this).val();
-                    }else if ($(this).attr('type') == 'file') {
+                        if(withOptions) {
+				data.options[$(this).attr('name')] = $(this).val();
+			} else {	
+				data.params[$(this).attr('name')] = $(this).val();
+		    	}
+		    }else if ($(this).attr('type') == 'file') {
                         data[$(this).attr('name')] = $(this)[0].files[0];
                     }else if ($(this).attr('type') == 'button') {
                         

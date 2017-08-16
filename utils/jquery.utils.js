@@ -144,7 +144,7 @@ $.fn.fill = function(optionDefault) {
         console.log(this.prop('tagName') + ' is not select')
         return false;
     }
-});
+};
 
 String.prototype.getExtension = function () {
     var re = /(?:\.([^.]+))?$/;

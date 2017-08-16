@@ -136,6 +136,16 @@ $.fn.clear = function() {
     }
 };
 
+$.fn.fill = function(optionDefault) {
+    optionDefault = typeof optionDefault === undefined ? null : optionDefault;
+    if (this.prop('tagName') === 'select') {
+        var lblDefault = '<option>Selecciona ' + optionDefault === null ? 'una opción' : optionDefault + '</option>';
+    } else {
+        console.log(this.prop('tagName') + ' is not select')
+        return false;
+    }
+});
+
 String.prototype.getExtension = function () {
     var re = /(?:\.([^.]+))?$/;
     return re.exec(this)[1]; 

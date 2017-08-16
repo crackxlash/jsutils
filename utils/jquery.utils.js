@@ -137,11 +137,12 @@ $.fn.clear = function() {
 };
 
 $.fn.fill = function(optionDefault, key, value, data) {
-    optionDefault = typeof optionDefault === undefined ? null : optionDefault;
+    optionDefault = typeof optionDefault === undefined ? 'una opción' : optionDefault;
     if (this.prop('tagName') === 'SELECT') {
-	var option = '<option>Selecciona ' + optionDefault === null ? 'una opción' : optionDefault + '</option>';
+	var option = '<option>Selecciona ' + optionDefault + '</option>';
 	$(this).empty();
-	$.each(data, function (i, val){
+	$.each(data, function (i, val) {
+	    console.log(val);
 	    option += '<option value="' + val[key] + '"> ' + val[value] + ' </option>';
 	});
 	

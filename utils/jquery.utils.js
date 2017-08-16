@@ -142,7 +142,6 @@ $.fn.fill = function(optionDefault, key, value, data) {
 	var option = '<option>Selecciona ' + optionDefault + '</option>';
 	$(this).empty();
 	$.each(data, function (i, val) {
-	    console.log(val);
 	    option += '<option value="' + val[key] + '"> ' + val[value] + ' </option>';
 	});
 	

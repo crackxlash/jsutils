@@ -138,7 +138,7 @@ $.fn.clear = function() {
 
 $.fn.fill = function(optionDefault) {
     optionDefault = typeof optionDefault === undefined ? null : optionDefault;
-    if (this.prop('tagName') === 'select') {
+    if (this.prop('tagName') === 'SELECT') {
         var lblDefault = '<option>Selecciona ' + optionDefault === null ? 'una opción' : optionDefault + '</option>';
     } else {
         console.log(this.prop('tagName') + ' is not select')

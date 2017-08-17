@@ -139,7 +139,7 @@ $.fn.clear = function() {
 $.fn.fill = function(optionDefault, key, value, data) {
     optionDefault = typeof optionDefault === undefined ? 'una opción' : optionDefault;
     if (this.prop('tagName') === 'SELECT') {
-	var option = '<option>Selecciona ' + optionDefault + '</option>';
+	var option = '<option value="default">Selecciona ' + optionDefault + '</option>';
 	$(this).empty();
 	$.each(data, function (i, val) {
 	    option += '<option value="' + val[key] + '"> ' + val[value] + ' </option>';

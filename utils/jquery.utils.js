@@ -72,6 +72,7 @@ $.fn.setParams = function (params) {
     var select;
     if (params) {
         if (this.prop('tagName') === 'FORM') {
+	    $('body').find('.btn-save').html('Actualizar').removeClass('btn-primary').addClass('btn-warning');
             $.each(this.find('input, select, textarea, button'), function() {
                 var name = $(this).attr('name');
                 if($(this).attr('type') === 'button' || $(this).attr('type') === 'submit') {

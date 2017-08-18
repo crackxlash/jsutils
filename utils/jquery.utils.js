@@ -94,6 +94,8 @@ $.fn.setParams = function (params) {
                 
                 if (params[name] != undefined) 
                     $(this).val(params[name]);
+		else
+	            $(this).parent().find('.form-group").remove();
             });
         }
     }

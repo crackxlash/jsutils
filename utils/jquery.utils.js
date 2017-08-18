@@ -92,11 +92,13 @@ $.fn.setParams = function (params) {
                     }
                 }
                 
-                if (params[name] != undefined) 
+                if (params[name] != undefined) {
                     $(this).val(params[name]);
-		else
+		}
+		else {
 	            $(this).parent().find('.form-group').remove();
-            });
+		}
+	    });
         }
     }
 }

@@ -131,6 +131,7 @@ $.fn.clear = function() {
     if (this.prop('tagName') === 'FORM') {
         this[0].reset();
         this.find('button').attr('disabled', 'disabled');
+	$('body').find('.btn-save').html('Guardar').removeClass('btn-warning').addClass('btn-primary');
     } else {
         console.log(this.prop('tagName') + ' is not Form')
         return false;

@@ -198,18 +198,18 @@ Array.prototype.isEmpty = function () {
 Date.prototype.format = function (format, separator) {
     format = typeof format !== 'undefined' ? format : 'mdyy';
     separator = typeof separator !== 'undefined' ? separator : '/';
-    var getDate = this.toISOString().split('T')[0].split('-');
+    var getDate = this.toLocaleString().split(' ')[0].split('/');
 
     switch (format) {
-        case 'mdyy': return getDate[1] + separator + getDate[2] + separator + getDate[0];
+        case 'mdyy': return getDate[1] + separator + getDate[0] + separator + getDate[2];
             break;
-        case 'dmyy': return getDate[2] + separator + getDate[1] + separator + getDate[0];
+        case 'dmyy': return getDate[0] + separator + getDate[1] + separator + getDate[2];
             break;
-        case 'yymd': return getDate[0] + separator + getDate[1] + separator + getDate[2];
+        case 'yymd': return getDate[2] + separator + getDate[1] + separator + getDate[0];
             break;
-        case 'yydm': return getDate[0] + separator + getDate[2] + separator + getDate[1];
+        case 'yydm': return getDate[2] + separator + getDate[0] + separator + getDate[1];
             break;
-        default: return getDate[1] + separator + getDate[2] + separator + getDate[0];
+        default: return getDate[1] + separator + getDate[0] + separator + getDate[2];
             break;
     }
 };

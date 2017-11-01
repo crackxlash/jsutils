@@ -195,6 +195,10 @@ Array.prototype.isEmpty = function () {
     return this.length > 0 ? true : false;
 };
 
+String.prototype.padLeft = function (pad) {
+    return (pad + this).slice(-pad.length);
+}
+
 Date.prototype.format = function (format, separator) {
     format = typeof format !== 'undefined' ? format : 'yyyy-mm-dd';
     separator = typeof separator !== 'undefined' ? separator : '-';

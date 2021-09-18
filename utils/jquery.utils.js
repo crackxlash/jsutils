@@ -222,13 +222,13 @@ Date.prototype.format = function (format, separator) {
 };
 
 // Builds the HTML Table out of myList.
-var buildHtmlTable = function(selector) {
-    var columns = addAllColumnHeaders(myList, selector);
+var buildHtmlTable = function(selector, data) {
+    var columns = addAllColumnHeaders(data, selector);
 
-    for (var i = 0; i < myList.length; i++) {
+    for (var i = 0; i < data.length; i++) {
         var row$ = $('<tr/>');
         for (var colIndex = 0; colIndex < columns.length; colIndex++) {
-            var cellValue = myList[i][columns[colIndex]];
+            var cellValue = data[i][columns[colIndex]];
             if (cellValue == null) cellValue = "";
             row$.append($('<td/>').html(cellValue));
         }
@@ -242,8 +242,8 @@ var addAllColumnHeaders = function(data, selector) {
     var columnSet = [];
     var headerTr$ = $('<tr/>');
 
-    for (var i = 0; i < myList.length; i++) {
-        var rowHash = myList[i];
+    for (var i = 0; i < data.length; i++) {
+        var rowHash = data[i];
         for (var key in rowHash) {
             if ($.inArray(key, columnSet) == -1) {
                 columnSet.push(key);

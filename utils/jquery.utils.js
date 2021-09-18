@@ -222,14 +222,17 @@ Date.prototype.format = function (format, separator) {
 };
 
 // Builds the HTML Table out of myList.
-var buildHtmlTable = function(selector, data) {
+var buildHtmlTable = function(selector, data, type = 'horizontal') {
     var columns = addAllColumnHeaders(data, selector);
-
     for (var i = 0; i < data.length; i++) {
         var row$ = $('<tr/>');
+        var vertical = Object.keys(data[i]);
         for (var colIndex = 0; colIndex < columns.length; colIndex++) {
             var cellValue = data[i][columns[colIndex]];
             if (cellValue == null) cellValue = "";
+            if(type == 'vertical') {
+                console.log(vertical);
+            }
             row$.append($('<td/>').html(cellValue));
         }
         $(selector).append(row$);

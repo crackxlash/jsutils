@@ -226,12 +226,13 @@ var buildHtmlTable = function(selector, data, type = 'horizontal') {
     var columns = addAllColumnHeaders(data, selector);
     for (var i = 0; i < data.length; i++) {
         var row$ = $('<tr/>');
-        var vertical = Object.keys(data[i]);
+        var align = Object.keys(data[i]);
         for (var colIndex = 0; colIndex < columns.length; colIndex++) {
             var cellValue = data[i][columns[colIndex]];
             if (cellValue == null) cellValue = "";
+            console.log(type);
             if(type == 'vertical') {
-                console.log(vertical);
+                console.log(align);
             }
             row$.append($('<td/>').html(cellValue));
         }

@@ -222,27 +222,43 @@ Date.prototype.format = function (format, separator) {
 };
 
 // Builds the HTML Table out of myList.
-var buildHtmlTable = function(selector, data, type = 'horizontal') {
-    var columns = addAllColumnHeaders(data, selector);
-    for (var i = 0; i < data.length; i++) {
-        var row$ = $('<tr/>');
-        var align = Object.keys(data[i]);
-        for (var colIndex = 0; colIndex < columns.length; colIndex++) {
-            var cellValue = data[i][columns[colIndex]];
-            if (cellValue == null) cellValue = "";
-            console.log(type);
-            if(type == 'vertical') {
-                console.log(align);
+var buildHtmlTable = function (selector, data, type = 'horizontal') {
+    if (type == 'vertical') {
+        var columns = Object.keys(data[0]);
+        for (var i = 0; i < data.length; i++) {
+            var row$ = $('<tbody/>');
+            var align = Object.keys(data[i]);
+            for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+                var cellHead = columns[colIndex],
+                    cellValue = data[i][columns[colIndex]];
+                if (cellValue == null) cellValue = "";
+                row$.append($('<tr/>')
+                    .append($('<th/>').html(cellHead))
+                    .append($('<td/>').html(cellValue))
+                );
             }
-            row$.append($('<td/>').html(cellValue));
+            $(selector).append(row$);
         }
-        $(selector).append(row$);
+    }
+    else {
+        var columns = addAllColumnHeaders(data, selector);
+        $(selector).append($('<tbody/>'));
+        for (var i = 0; i < data.length; i++) {
+            var row$ = $('<tr/>');
+            var align = Object.keys(data[i]);
+            for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+                var cellValue = data[i][columns[colIndex]];
+                if (cellValue == null) cellValue = "";
+                row$.append($('<td/>').html(cellValue));
+            }
+            $(selector).find('tbody').append(row$);
+        }
     }
 }
 // Adds a header row to the table and returns the set of columns.
 // Need to do union of keys from all records as some records may not contain
 // all records.
-var addAllColumnHeaders = function(data, selector) {
+var addAllColumnHeaders = function (data, selector) {
     var columnSet = [];
     var headerTr$ = $('<tr/>');
 

@@ -257,7 +257,8 @@ var buildHtmlTable = function (selector, data, type = 'horizontal') {
 }
 // Adds a header row to the table and returns the set of columns.
 // Need to do union of keys from all records as some records may not contain
-// all records.
+// all records. 
+// add.
 var addAllColumnHeaders = function (data, selector) {
     var columnSet = [];
     var headerTr$ = $('<tr/>');

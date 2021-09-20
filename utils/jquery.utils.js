@@ -25,7 +25,8 @@ $.fn.getParams = function (actions, pswdEncrypt) {
     if (this.prop('tagName') === 'FORM') {
         data = {
             params: {},
-            options: {}
+            options: {},
+            outside: false
         };
 
         if (actions) {

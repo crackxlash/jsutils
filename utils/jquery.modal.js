@@ -1,3 +1,31 @@
+/**
+ * Validate form based in Bootstrap
+ * @returns 
+ */
+$.fn.validate = function () {
+    if (this.prop('tagName') === 'FORM') {
+        var isOk = true;
+
+        $.each(this.find('input, select, textarea'), function () {
+            if ($(this).attr('required')) {
+                if ($(this).val() === '' || $(this).parent().hasClass('has-error')) {
+                    $(this).focus().blur().focus();
+                    isOk = false;
+                    return false;
+                }
+            }
+        });
+
+        return isOk;
+    } else {
+        console.log(this.prop('tagName') + ' is not Form')
+        return false;
+    }
+}
+/**
+ * 
+ * @param {Object} params 
+ */
 $.fn.loadData = function (params) {
     if (params.buttonOK !== undefined) {
         var attr = params.buttonOK.options === undefined ? null : params.buttonOK.options;
